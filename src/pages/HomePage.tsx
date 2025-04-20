@@ -7,14 +7,14 @@ import { LoadingOne } from "../components/LoadingOne";
 
 const HomePage: React.FC = () => {
   const testV = import.meta.env.VITE_TEST_ENV;
-  useEffect(() => {
-    const fetch = async () => {
-      const res = await ApiCalls.getPosts();
-      console.log("res", res);
-    };
-
-    fetch();
-  }, []);
+  //useEffect(() => {
+  //  const fetch = async () => {
+  //    const res = await ApiCalls.getPosts();
+  //    console.log("res", res);
+  //  };
+  //
+  //  fetch();
+  //}, []);
 
   return (
     <DefaultPageLayout>
