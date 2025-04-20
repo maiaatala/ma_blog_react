@@ -18,6 +18,8 @@ CustomAxios.interceptors.response.use(
       window.location.href = "/403";
     } else if (status === 404) {
       window.location.href = "/404";
+    } else if (status === 500) {
+      window.location.href = "/500";
     }
 
     return Promise.reject(error);
