@@ -13,16 +13,72 @@ body {
   position: relative;
   margin: 0;
   font-family:
-    -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
-    "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    "Roboto",
+    "Roboto Serif",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    "Oxygen",
+    "Ubuntu",
+    "Cantarell",
+    "Fira Sans",
+    "Droid Sans",
+    "Helvetica Neue",
+    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #111111; /* $main-text-color */
-  background-color: #ffffff; /* $main-background-color */
-  font-size: 14px; /* $main-text-size */
+  color: #eceff4; /* $main-text-color */
+  background-color: #2e3440; /* $main-background-color */
+  font-size: 16px; /* $main-text-size */
+}
+
+a {
+  color: #ebcb8b;
+}
+
+a:visited {
+  color: #d3a7f4;
 }
 
 code {
   font-family:
     source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+.loader-svg {
+  display: flex;
+  gap: 0;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  shape-rendering: geometricPrecision;
+  stroke: #f8dd74;
+}
+.top-layer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.bottom-layer {
+  display: flex;
+  flex-direction: row;
+}
+.loader-svg .mid svg polygon {
+  stroke-dasharray: 25;
+  animation: midanim 2s linear infinite;
+}
+@keyframes midanim {
+  to {
+    stroke-dashoffset: 100;
+  }
+}
+.loader-svg svg polygon {
+  stroke-dasharray: 25;
+  animation: anim 2.5s linear infinite;
+}
+@keyframes anim {
+  to {
+    stroke-dashoffset: 100;
+  }
 }

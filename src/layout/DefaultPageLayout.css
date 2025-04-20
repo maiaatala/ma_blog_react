@@ -1,0 +1,22 @@
+section {
+  display: flex;
+  width: 100%;
+}
+
+main {
+  margin: 0 auto;
+  flex: 1 1 1000px;
+  max-width: 1000px;
+  position: relative;
+}
+
+aside {
+  position: relative;
+  flex: 1 1 fit-content;
+}
+
+@media (max-width: 800px) {
+  aside {
+    display: none;
+  }
+}
