@@ -43,12 +43,11 @@ yarn dev
 
 ## ⚗️ Technologies list
 
--   [TypeScript](https://www.typescriptlang.org/)
--   [Redux Toolkit](https://redux-toolkit.js.org/)
--   [Router](https://reactrouter.com/)
--   [Axios](https://axios-http.com/)
--   [Moment](https://momentjs.com/)
--   [ESlint](https://eslint.org/) & [Prettier](https://prettier.io/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Router](https://reactrouter.com/)
+- [Axios](https://axios-http.com/)
+- [Moment](https://momentjs.com/)
+- [ESlint](https://eslint.org/) & [Prettier](https://prettier.io/)
 
 ---
 
@@ -166,9 +165,6 @@ This is the structure of the files in the project:
     │   ├── components
     │   ├── pages
     │   ├── resources           # images, constants and other static resources
-    │   ├── store               # Redux store
-    │   │   ├── actions         # store's actions
-    │   │   └── reducers        # store's reducers
     │   ├── styles
     │   ├── types               # data interfaces
     │   ├── utility             # utilities functions and custom components
