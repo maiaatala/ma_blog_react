@@ -16,6 +16,13 @@
     sans-serif;
 }
 
+html {
+  overflow-y: hidden;
+}
+body {
+  overflow-y: scroll;
+}
+
 html,
 body {
   height: 100%;

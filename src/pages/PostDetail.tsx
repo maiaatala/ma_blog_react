@@ -6,6 +6,7 @@ import { Post } from "../services/dto";
 import { ApiCalls } from "../services/services";
 import { OneComment } from "../components/OneComment";
 import { useFetchComments } from "../utility/useFetchComments";
+import { ScrollToTopButton } from "../components/ScrollTopBtn";
 
 export const PostDetail = () => {
   const { postId } = useParams();
@@ -42,7 +43,18 @@ export const PostDetail = () => {
           }}
         />
       )}
-      <DefaultPageLayout>
+      <DefaultPageLayout
+        rightContent={
+          <div
+            style={{
+              position: "sticky",
+              top: "20px",
+            }}
+          >
+            <ScrollToTopButton />
+          </div>
+        }
+      >
         {!post && <Loading />}
         {post && (
           <article
@@ -137,7 +149,9 @@ export const PostDetail = () => {
           >
             {isLoading && <Loading />}
             {comments?.length > 0 &&
-              comments.map((c) => <OneComment comment={c} postId={post.id} />)}
+              comments.map((c) => (
+                <OneComment key={c.id} comment={c} postId={post.id} />
+              ))}
           </section>
         )}
       </DefaultPageLayout>

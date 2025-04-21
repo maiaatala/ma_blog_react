@@ -29,7 +29,6 @@ export const useFetchPosts = (
   }, []);
 
   useEffect(() => {
-    console.log("hi", !observerRef?.current);
     if (!observerRef?.current || !hasMore || error) return;
 
     const observer = new IntersectionObserver(([entry]) => {

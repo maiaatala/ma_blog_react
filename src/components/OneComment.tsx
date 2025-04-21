@@ -46,7 +46,12 @@ export const OneComment = (props: OneCommentProps) => {
       </div>
       {hasFetchedReplies &&
         comments.map((c) => (
-          <OneComment comment={c} level={level + 1} postId={postId} />
+          <OneComment
+            key={c.id}
+            comment={c}
+            level={level + 1}
+            postId={postId}
+          />
         ))}
 
       {isLoading && <Loading width="50px" />}
