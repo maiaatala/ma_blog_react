@@ -1,6 +1,123 @@
 import { useParams } from "react-router";
+import { DefaultPageLayout } from "../layout/DefaultPageLayout";
+import { Loading } from "../components/Loading";
+import { useEffect, useState } from "react";
+import { Post } from "../services/dto";
+import { ApiCalls } from "../services/services";
 
 export const PostDetail = () => {
   const { postId } = useParams();
-  return <div>detailed post {postId} goes here</div>;
+  const [post, setPost] = useState<Post | null>(null);
+
+  useEffect(() => {
+    const fetchPost = async (id: string) => {
+      try {
+        const res = await ApiCalls.getPostById(id);
+        setPost(res);
+      } catch (e) {
+        console.error(e);
+      }
+    };
+
+    if (typeof postId === "string" && post?.id !== postId) fetchPost(postId);
+  }, [postId, post?.id]);
+
+  return (
+    <div>
+      {post && (
+        <img
+          src={post.image}
+          alt={post.title}
+          style={{
+            width: "100%",
+            height: "300px",
+            maxHeight: "25vh",
+          }}
+        />
+      )}
+      <DefaultPageLayout>
+        {!post && <Loading />}
+        {post && (
+          <article
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: "20px",
+              alignItems: "stretch",
+              justifyContent: "flex-start",
+            }}
+          >
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                gap: "4px",
+                alignItems: "center",
+                justifyContent: "flex-start",
+              }}
+            >
+              <h1
+                style={{
+                  fontWeight: 700,
+                  fontSize: "2.25rem",
+                  color: "#88c0d0",
+                }}
+              >
+                {post.title}
+              </h1>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  gap: "4px",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <img
+                  src={post.author.photo}
+                  style={{
+                    borderRadius: "50%",
+                    width: "24px",
+                    height: "24px",
+                    objectFit: "cover",
+                  }}
+                  alt={post.author.name}
+                />
+                <p
+                  style={{
+                    fontWeight: 700,
+                    color: "#8fbcbb",
+                    fontSize: "0.8rem",
+                  }}
+                >
+                  {post.author.name} •{" "}
+                  {new Date(post.updatedAt).toLocaleDateString("pt-br")}
+                </p>
+              </div>
+              <p
+                style={{
+                  fontSize: "1.1rem",
+                  fontWeight: 600,
+                  color: "#d8dee9",
+                }}
+              >
+                {post.description}
+              </p>
+            </div>
+            <article
+              id="post-content"
+              style={{
+                borderRadius: "8px",
+                padding: "20px 12px",
+                width: "100%",
+                background: "#3b4252",
+              }}
+              dangerouslySetInnerHTML={{ __html: post.content }}
+            />
+          </article>
+        )}
+      </DefaultPageLayout>
+    </div>
+  );
 };

@@ -1,19 +1,18 @@
-import React, { useEffect, useRef } from "react";
-import DateDisplay from "../components/DateDisplay";
-import { ApiCalls } from "../services/services";
-import { DefaultPageLayout } from "../layout/DefaultPageLayout";
+import React, { useRef } from "react";
 import { Loading } from "../components/Loading";
-import { LoadingOne } from "../components/LoadingOne";
 import { useFetchPosts } from "../utility/useFetchPosts";
 import { PostCard } from "../components/PostCard";
+import { useNavigate } from "react-router";
 
 const HomePage: React.FC = () => {
   const observerRef = useRef(null);
 
   const { posts, isLoading } = useFetchPosts(observerRef);
 
+  const navigate = useNavigate();
+
   return (
-    <main style={{ padding: "20px 1em", flex: 1, maxWidth: "100%" }}>
+    <main style={{ padding: "20px 40px 120px", flex: 1, maxWidth: "100%" }}>
       <div
         style={{
           display: "flex",
@@ -23,7 +22,11 @@ const HomePage: React.FC = () => {
         }}
       >
         {posts.map((p) => (
-          <PostCard key={p.id} post={p} />
+          <PostCard
+            onClick={() => navigate(`/posts/${p.id}`)}
+            key={p.id}
+            post={p}
+          />
         ))}
       </div>
       {isLoading && <Loading />}
