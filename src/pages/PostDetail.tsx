@@ -28,7 +28,7 @@ export const PostDetail = () => {
     };
 
     if (typeof postId === "string" && post?.id !== postId) fetchPost(postId);
-  }, [postId, post?.id]);
+  }, [postId, post?.id, fetchComments]);
 
   return (
     <div>
@@ -44,11 +44,42 @@ export const PostDetail = () => {
         />
       )}
       <DefaultPageLayout
+        leftContent={
+          post && (
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "flex-end",
+                alignItems: "flex-end",
+                paddingRight: "10px",
+                gap: "10px",
+              }}
+            >
+              {post?.tags.map((t) => (
+                <p
+                  key={t}
+                  style={{
+                    borderRadius: "4px",
+                    padding: "4px 6px",
+                    background: "#b48ead",
+                    fontSize: "0.8rem",
+                    fontWeight: 700,
+                    color: "#2e3440",
+                  }}
+                >
+                  {t}
+                </p>
+              ))}
+            </div>
+          )
+        }
         rightContent={
           <div
             style={{
               position: "sticky",
-              top: "20px",
+              top: "40px",
+              paddingLeft: "10px",
             }}
           >
             <ScrollToTopButton />
