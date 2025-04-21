@@ -4,16 +4,23 @@ import { Loading } from "../components/Loading";
 import { useEffect, useState } from "react";
 import { Post } from "../services/dto";
 import { ApiCalls } from "../services/services";
+import { OneComment } from "../components/OneComment";
+import { useFetchComments } from "../utility/useFetchComments";
 
 export const PostDetail = () => {
   const { postId } = useParams();
   const [post, setPost] = useState<Post | null>(null);
+
+  const { fetchComments, isLoading, comments } = useFetchComments(
+    postId as string,
+  );
 
   useEffect(() => {
     const fetchPost = async (id: string) => {
       try {
         const res = await ApiCalls.getPostById(id);
         setPost(res);
+        fetchComments();
       } catch (e) {
         console.error(e);
       }
@@ -116,6 +123,22 @@ export const PostDetail = () => {
               dangerouslySetInnerHTML={{ __html: post.content }}
             />
           </article>
+        )}
+        {post && (
+          <section
+            className="post-comments"
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "stretch",
+              justifyContent: "flex-start",
+              gap: "16px",
+            }}
+          >
+            {isLoading && <Loading />}
+            {comments?.length > 0 &&
+              comments.map((c) => <OneComment comment={c} postId={post.id} />)}
+          </section>
         )}
       </DefaultPageLayout>
     </div>

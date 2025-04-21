@@ -1,6 +1,19 @@
 * {
   box-sizing: border-box;
   outline: none;
+  font-family:
+    "Roboto",
+    "Roboto Serif",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    "Oxygen",
+    "Ubuntu",
+    "Cantarell",
+    "Fira Sans",
+    "Droid Sans",
+    "Helvetica Neue",
+    sans-serif;
 }
 
 html,
@@ -16,6 +29,10 @@ h4,
 h5,
 p {
   margin: 0;
+}
+
+h1 {
+  font-family: "Roboto Serif", Serif;
 }
 
 img {
@@ -36,19 +53,7 @@ img {
 body {
   position: relative;
   margin: 0;
-  font-family:
-    "Roboto",
-    "Roboto Serif",
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    "Oxygen",
-    "Ubuntu",
-    "Cantarell",
-    "Fira Sans",
-    "Droid Sans",
-    "Helvetica Neue",
-    sans-serif;
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #eceff4; /* $main-text-color */
