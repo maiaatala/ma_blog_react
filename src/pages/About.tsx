@@ -20,7 +20,7 @@ export const About = () => {
           WebPageTest.
         </p>
       </article>
-      <article>
+      <article className="about-article">
         <h2>Sobre a Implementação</h2>
         <p>
           O protótipo inicial foi concebido no Figma, priorizando uma navegação
