@@ -4,7 +4,7 @@ import "./About.css";
 export const About = () => {
   return (
     <DefaultPageLayout>
-      <article>
+      <article className="about-article">
         <h2>Sobre o Projeto</h2>
         <p>
           Este site faz parte de uma tese de graduação cujo objetivo foi avaliar

@@ -27,6 +27,7 @@ export interface Post {
     name: string;
     photo?: string;
   };
+  tags: string[];
 }
 
 export interface Comment {
