@@ -1,21 +1,21 @@
 /**
  * @jest-environment jsdom
  */
-import { render, screen } from '@testing-library/react'
-import { TextEncoder, TextDecoder } from 'util'
+import { render, screen } from "@testing-library/react";
+import { TextEncoder, TextDecoder } from "util";
 
-Object.assign(global, { TextDecoder, TextEncoder })
+import "@testing-library/jest-dom";
+import { BrowserRouter as Router } from "react-router";
+import NotFoundPage from "../../pages/errors/NotFoundPage";
 
-import '@testing-library/jest-dom'
-import { BrowserRouter as Router } from 'react-router'
-import NotFoundPage from '../../pages/NotFoundPage'
+Object.assign(global, { TextDecoder, TextEncoder });
 
-test('renders error message', () => {
-    render(
-        <Router>
-            <NotFoundPage />
-        </Router>
-    )
-    const errorMessage = screen.getByText(/Oops 404!/i)
-    expect(errorMessage).toBeInTheDocument()
-})
+test("renders error message", () => {
+  render(
+    <Router>
+      <NotFoundPage />
+    </Router>,
+  );
+  const errorMessage = screen.getByText(/Oops 404!/i);
+  expect(errorMessage).toBeInTheDocument();
+});
