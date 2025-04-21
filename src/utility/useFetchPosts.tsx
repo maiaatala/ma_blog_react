@@ -17,7 +17,8 @@ export const useFetchPosts = (
       const res = await ApiCalls.getPosts(page);
       const _nextPage = page + 1;
       const _hasMore = Math.ceil(res.totalItems / itemsPerPage) > _nextPage;
-      setPosts((old) => [...old, ...res.items]);
+      const newItems = res?.items?.length > 0 ? res.items : [];
+      setPosts((old) => [...old, ...newItems]);
       setNextPage(_nextPage);
       setHasMore(_hasMore);
     } catch (e) {
