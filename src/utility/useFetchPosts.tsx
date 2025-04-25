@@ -21,9 +21,10 @@ export const useFetchPosts = (
       setPosts((old) => [...old, ...newItems]);
       setNextPage(_nextPage);
       setHasMore(_hasMore);
+      setError(null);
     } catch (e) {
       console.error("error fetching posts", e);
-      setError(null);
+      setError(e as Error);
     } finally {
       setIsLoading(false);
     }
