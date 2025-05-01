@@ -1,3 +1,4 @@
+import { ContactForm } from "../components/ContactForm";
 import { DefaultPageLayout } from "../layout/DefaultPageLayout";
 import "./About.css";
 
@@ -43,6 +44,7 @@ export const About = () => {
           condições de rede e infraestrutura.
         </p>
       </article>
+      <ContactForm />
     </DefaultPageLayout>
   );
 };

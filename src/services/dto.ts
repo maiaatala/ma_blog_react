@@ -42,3 +42,9 @@ export interface Comment {
     photo?: string;
   };
 }
+
+export interface CreateContact {
+  name: string;
+  email: string;
+  message: string;
+}

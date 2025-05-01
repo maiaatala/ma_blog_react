@@ -1,5 +1,5 @@
 import customAxios from "./customAxios";
-import { Post, ShortPostPaginated, Comment } from "./dto";
+import { Post, ShortPostPaginated, Comment, CreateContact } from "./dto";
 
 const getPosts = async (
   page = 1,
@@ -26,8 +26,14 @@ const getPostComments = async (
   return res.data;
 };
 
+const postContact = async (contactdto: CreateContact): Promise<boolean> => {
+  const res = await customAxios.post<unknown>(`/contact`, contactdto);
+  return Boolean(res.data);
+};
+
 export const ApiCalls = {
   getPosts,
   getPostById,
   getPostComments,
+  postContact,
 };
