@@ -5,6 +5,7 @@ import "./About.css";
 export const About = () => {
   return (
     <DefaultPageLayout>
+      <ContactForm />
       <article className="about-article">
         <h2>Sobre o Projeto</h2>
         <p>
@@ -44,7 +45,6 @@ export const About = () => {
           condições de rede e infraestrutura.
         </p>
       </article>
-      <ContactForm />
     </DefaultPageLayout>
   );
 };
