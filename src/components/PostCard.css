@@ -50,12 +50,13 @@
       color: #eceff4;
     }
   }
-}
-
-.postcard-wrapper > img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: all 0.5s ease-out;
+  }
 }
 
 .postcard-position:hover {
@@ -74,6 +75,7 @@
     transition-delay: 0.7s;
 
     img {
+      transition-delay: 0.9s;
       border-radius: 10px 10px 0 0;
     }
 
