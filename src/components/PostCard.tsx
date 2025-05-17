@@ -9,7 +9,7 @@ interface PostCardProps {
 export const PostCard = (props: PostCardProps) => {
   const {
     onClick,
-    post: { id, image, title, description, createdAt, author },
+    post: { image, title, description, createdAt, author },
   } = props;
 
   const date = new Date(createdAt).toLocaleDateString("pt-br");
@@ -17,7 +17,7 @@ export const PostCard = (props: PostCardProps) => {
   return (
     <div className="postcard-position" onClick={onClick}>
       <div className="postcard-wrapper">
-        <img src={`https://picsum.photos/seed/${id}/1800/300`} alt={title} />
+        <img src={image} alt={title} />
         <div className="metadata">
           <h3>{title}</h3>
           <p className="description">{description}</p>
